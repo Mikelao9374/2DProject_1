@@ -100,10 +100,21 @@ void Render()
 
 int main(int argc,char* argv[])
 {
-	SDL_Init(SDL_INIT_EVERYTHING);
-	SDL_Window* mWindow = NULL;
-	mWindow = SDL_CreateWindow("Testing", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 360, SDL_WINDOW_SHOWN);
-	SDL_Delay(3000);
+	Init();
+	SDL_Event event;
+
+	while(runningbool == 1)
+	{
+		while(SDL_PollEvent(&event))
+			EventHandler(&event);
+
+		Render();
+	}
+	
+	SDL_DestroyWindow(mWindow);
+	SDL_DestroyRenderer(mRenderer);
+	SDL_DestroyTexture(Character);
+	
 	SDL_Quit();
 	return 0;
 }
