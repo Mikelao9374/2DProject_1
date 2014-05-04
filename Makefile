@@ -10,17 +10,17 @@ INCLUDE+= $(shell sdl2-config --cflags)
 # Libs flags
 LIB+= $(shell sdl2-config --libs)
 
-OBJ= main.o 
+OBJ= main.o
 
 OUT_EXE= game.exe
 
 $(OUT_EXE): $(OBJ)
 	@echo "    LD    "$@
-	@$(CXX) $(OBJ) $(CXXFLAG) -o $@
+	@$(CXX) $(OBJ) $(CXXFLAG) $(LIB) -o $@
 
 %.o: $(PWD)%.cpp
 	@echo "    CC    "$@
-	@$(CXX) $< $(CXXFLAG) $(INCLUDE) $(LIB) -c
+	@$(CXX) $< $(CXXFLAG) $(INCLUDE) -c
 
 .PHONY: clean
 clean:

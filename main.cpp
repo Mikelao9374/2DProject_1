@@ -21,11 +21,11 @@ SDL_Rect eAttackingPos;
 
 bool runningbool = true;
 
-SDL_Texture* LoadTexture(string fileName, SDL_Reanderer* renderer)
+SDL_Texture* LoadTexture(string fileName, SDL_Renderer* renderer)
 {
 	SDL_Surface* SurfaceImage = NULL;
 	SDL_Texture* TextureImage = NULL;
-	string basePath = SDL_GectBasePath();
+	string basePath = SDL_GetBasePath();
 
 	SurfaceImage = SDL_LoadBMP((basePath + fileName).c_str());
 	if(SurfaceImage == NULL);
@@ -83,7 +83,7 @@ void EventHandler(SDL_Event* event)
 				case SDLK_RIGHT:
 					CharacterPos.x = CharacterPos.x + 5;
 					break;
-				case SDLK_a;
+				case SDLK_a:
 					break;
 			}
 			break;
@@ -94,7 +94,7 @@ void Render()
 {
 	SDL_SetRenderDrawColor(mRenderer, 255, 255, 255, 255);
 	SDL_RenderClear(mRenderer);
-	SDL_RenderCopy(mainRenderer, Character, NULL, &CharacterPos);
+	SDL_RenderCopy(mRenderer, Character, NULL, &CharacterPos);
 	SDL_RenderPresent(mRenderer);
 }
 
