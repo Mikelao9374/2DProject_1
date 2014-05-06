@@ -7,4 +7,7 @@ class SDLcw
 	public:
 		SDLcw();
 		~SDLcw();
+		
+		SDL_Window* mWindow;
+		SDL_Renderer* mRenderer;
 }
