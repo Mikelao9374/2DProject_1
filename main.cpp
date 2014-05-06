@@ -1,6 +1,6 @@
-#include<iostream>
-#include<SDL2/SDL.h>
-#include<string>
+#include <iostream>
+#include <string>
+#include <SDL.h>
 
 using namespace std;
 
@@ -28,18 +28,19 @@ SDL_Texture* LoadTexture(string fileName, SDL_Renderer* renderer)
 	string basePath = SDL_GetBasePath();
 
 	SurfaceImage = SDL_LoadBMP((basePath + fileName).c_str());
-	if(SurfaceImage == NULL);
-	{
-		cout << "SDL ERROR:" << SDL_GetError() << endl;
+	if (SurfaceImage == NULL) {
+		cout << "Error while loading file: " << SDL_GetError() << endl;
 		exit(1);
 	}
+
 	TextureImage = SDL_CreateTextureFromSurface(renderer, SurfaceImage);
-	if(TextureImage == NULL)
-	{
-		cout << "SDL_ERROR:" << SDL_GetError() << endl;
+	if (TextureImage == NULL) {
+		cout << "Error while convert SDL_Surface into SDL_Texture:" << SDL_GetError() << endl;
 		exit(1);
 	}
+
 	SDL_FreeSurface(SurfaceImage);
+
 	return TextureImage;
 }
 
@@ -47,8 +48,18 @@ void Init()
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
 
-	mWindow = SDL_CreateWindow("2DProject_1", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 360, SDL_WINDOW_SHOWN);
-	mRenderer = SDL_CreateRenderer(mWindow, -1, SDL_RENDERER_ACCELERATED);
+	mWindow = SDL_CreateWindow(
+			"2DProject_1",
+			SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+			640, 360,
+			SDL_WINDOW_SHOWN
+			);
+
+	mRenderer = SDL_CreateRenderer(
+			mWindow,
+			-1,
+			SDL_RENDERER_ACCELERATED
+			);
 
 	Character = LoadTexture("Character.bmp", mRenderer);
 	cAttacking = LoadTexture("cAttacking.bmp", mRenderer);
@@ -63,14 +74,12 @@ void Init()
 
 void EventHandler(SDL_Event* event)
 {
-	switch(event->type)
-	{
+	switch (event->type) {
 		case SDL_QUIT:
 			runningbool = false;
 			break;
 		case SDL_KEYDOWN:
-			switch(event->key.keysym.sym)
-			{
+			switch (event->key.keysym.sym) {
 				case SDLK_UP:
 					CharacterPos.y = CharacterPos.y - 5;
 					break;
@@ -103,8 +112,7 @@ int main(int argc,char* argv[])
 	Init();
 	SDL_Event event;
 
-	while(runningbool == 1)
-	{
+	while (runningbool == true) {
 		while(SDL_PollEvent(&event))
 			EventHandler(&event);
 
