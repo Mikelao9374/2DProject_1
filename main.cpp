@@ -20,33 +20,6 @@ SDL_Rect eAttackingPos;
 
 bool runningbool = true;
 
-SDL_Texture* LoadTexture(string fileName, SDL_Renderer* renderer)
-{
-	SDL_Surface* SurfaceImage = NULL;
-	SDL_Texture* TextureImage = NULL;
-	string basePath = SDL_GetBasePath();
-
-	SurfaceImage = SDL_LoadBMP((basePath + fileName).c_str());
-	if (SurfaceImage == NULL) {
-		cout << "Error while loading file: " << SDL_GetError() << endl;
-		exit(1);
-	}
-
-	TextureImage = SDL_CreateTextureFromSurface(renderer, SurfaceImage);
-	if (TextureImage == NULL) {
-		cout << "Error while convert SDL_Surface into SDL_Texture:" << SDL_GetError() << endl;
-		exit(1);
-	}
-
-	SDL_FreeSurface(SurfaceImage);
-
-	return TextureImage;
-}
-
-void Init()
-{
-}
-
 void EventHandler(SDL_Event* event)
 {
 	switch (event->type) {
