@@ -11,4 +11,4 @@ class SDLli
 		SDL_Surface* SurfaceImage;
 		SDL_Texture* TextureImage;
 		string basePath = SDL_GetBasePath();
-}
+};

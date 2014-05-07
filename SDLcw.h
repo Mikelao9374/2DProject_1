@@ -1,13 +1,14 @@
 #include <iostream>
 #include <SDL2/SDL.h>
-#include <SDLss.h>
 
 class SDLcw
 {
 	public:
 		SDLcw();
 		~SDLcw();
+
+		static void Init();
 		
-		SDL_Window* mWindow;
-		SDL_Renderer* mRenderer;
-}
+		static SDL_Window* mWindow;
+		static SDL_Renderer* mRenderer;
+};

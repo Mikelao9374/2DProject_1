@@ -2,10 +2,9 @@
 #include <string>
 #include <SDL.h>
 
-using namespace std;
+#include "SDLcw.h"
 
-SDL_Window* mWindow = NULL;
-SDL_Renderer* mRenderer = NULL;
+using namespace std;
 
 SDL_Texture* Character = NULL;
 SDL_Rect CharacterPos;
@@ -46,30 +45,6 @@ SDL_Texture* LoadTexture(string fileName, SDL_Renderer* renderer)
 
 void Init()
 {
-	SDL_Init(SDL_INIT_EVERYTHING);
-
-	mWindow = SDL_CreateWindow(
-			"2DProject_1",
-			SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-			640, 360,
-			SDL_WINDOW_SHOWN
-			);
-
-	mRenderer = SDL_CreateRenderer(
-			mWindow,
-			-1,
-			SDL_RENDERER_ACCELERATED
-			);
-
-	Character = LoadTexture("Character.bmp", mRenderer);
-	cAttacking = LoadTexture("cAttacking.bmp", mRenderer);
-	Enemy = LoadTexture("Enemy.bmp", mRenderer);
-	eAttacking = LoadTexture("eAttacking.bmp", mRenderer);
-
-	CharacterPos.x = 10;
-	CharacterPos.y = 10;
-	CharacterPos.w = 80;
-	CharacterPos.y = 100;
 }
 
 void EventHandler(SDL_Event* event)
@@ -101,15 +76,14 @@ void EventHandler(SDL_Event* event)
 
 void Render()
 {
-	SDL_SetRenderDrawColor(mRenderer, 255, 255, 255, 255);
-	SDL_RenderClear(mRenderer);
-	SDL_RenderCopy(mRenderer, Character, NULL, &CharacterPos);
-	SDL_RenderPresent(mRenderer);
+	SDL_SetRenderDrawColor(SDLcw::mRenderer, 0xcc, 0xcc, 0xcc, 0xff);
+	SDL_RenderClear(SDLcw::mRenderer);
+	SDL_RenderPresent(SDLcw::mRenderer);
 }
 
 int main(int argc,char* argv[])
 {
-	Init();
+	SDLcw::Init();
 	SDL_Event event;
 
 	while (runningbool == true) {
@@ -118,10 +92,6 @@ int main(int argc,char* argv[])
 
 		Render();
 	}
-	
-	SDL_DestroyWindow(mWindow);
-	SDL_DestroyRenderer(mRenderer);
-	SDL_DestroyTexture(Character);
 	
 	SDL_Quit();
 	return 0;
