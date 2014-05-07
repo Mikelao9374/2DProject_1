@@ -1,6 +1,6 @@
-#include<iostream>
-#include<SDL2/SDL.h>
-#include<SDLss.h>
+#include <iostream>
+#include <SDL2/SDL.h>
+#include <SDLss.h>
 
 class SDLcw
 {

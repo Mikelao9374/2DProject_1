@@ -1,6 +1,6 @@
-#include<iostream>
-#include<SDL2/SDL.h>
-#include<string>
+#include <iostream>
+#include <SDL2/SDL.h>
+#include <string>
 
 class SDLli
 {

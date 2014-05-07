@@ -1,7 +1,4 @@
-#include<iostream>
-#include<SDL2/SDL.h>
-#include<string>
-#incliude"SDLli.h"
+#include "SDLli.h"
 
 SDLli::SDLli(string fileName, SDL_Renderer* renderer)
 {
