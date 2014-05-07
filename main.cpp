@@ -3,6 +3,7 @@
 #include <SDL.h>
 
 #include "SDLcw.h"
+#include "SDLli.h"
 
 using namespace std;
 
