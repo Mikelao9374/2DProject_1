@@ -21,6 +21,9 @@ SDL_Rect eAttackingPos;
 
 bool runningbool = true;
 
+enum Key{Up, Down, Left, Right};
+Key key = NULL;
+
 void EventHandler(SDL_Event* event)
 {
 	switch (event->type) {
@@ -31,17 +34,41 @@ void EventHandler(SDL_Event* event)
 			switch (event->key.keysym.sym) {
 				case SDLK_UP:
 					CharacterPos.y = CharacterPos.y - 5;
+					key = Up;
 					break;
 				case SDLK_DOWN:
 					CharacterPos.y = CharacterPos.y + 5;
+					key = Down;
 					break;
 				case SDLK_LEFT:
 					CharacterPos.x = CharacterPos.x - 5;
+					key = Left;
 					break;
 				case SDLK_RIGHT:
 					CharacterPos.x = CharacterPos.x + 5;
+					key = Right;
 					break;
 				case SDLK_a:
+					if (key == Up)
+					{
+						cAttackingPos.x = CharacterPos.x;
+						cAttackingPos.y = CharacterPos.y - 5;
+					}
+					else if (key == Down)
+					{
+						cAttackingPos.x = CharacterPos.x;
+						cAttackingPos.y = CharacterPos.y + 5;
+					}
+					else if (key == Left)
+					{
+						cAttackingPos.x = CharacterPos.x - 5;
+						cAttackingPos.y = CharacterPos.y;
+					}
+					else if (key == Right)
+					{
+						cAttackingPos.x = CharacterPos.x + 5;
+						cAttackingPos.y = CharacterPos.y;
+					}
 					break;
 			}
 			break;
@@ -60,10 +87,22 @@ int main(int argc,char* argv[])
 	SDLcw::Init();
 	SDL_Event event;
 
-	while (runningbool == true) {
-		while(SDL_PollEvent(&event))
-			EventHandler(&event);
+	CharacterPos.x = 10;
+	CharacterPos.y = 10;
 
+	EnemyPos.x = 615;
+	EnemyPos.y = 335;
+
+	while (runningbool == true) 
+	{
+		while(SDL_PollEvent(&event))
+		{
+			EventHandler(&event);
+			if (SDL_HasIntersection(&cAttackingPos, &EnemyPos) == SDL_TRUE)
+			{
+				
+			}
+		}
 		Render();
 	}
 	
