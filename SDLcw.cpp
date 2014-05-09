@@ -1,4 +1,4 @@
-#include"SDLcw.h"
+#include "SDLcw.h"
 
 SDL_Window* SDLcw::mWindow = NULL;
 SDL_Renderer* SDLcw::mRenderer = NULL;
