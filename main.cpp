@@ -16,8 +16,8 @@ SDL_Rect cAttackingPos;
 SDL_Texture* Enemy = NULL;
 SDL_Rect EnemyPos;
 
-SDL_Texture* eAttacking = NULL;
-SDL_Rect eAttackingPos;
+//SDL_Texture* eAttacking = NULL;
+//SDL_Rect eAttackingPos;
 
 bool runningbool = true;
 
