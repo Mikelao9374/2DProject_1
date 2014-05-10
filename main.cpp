@@ -21,8 +21,13 @@ SDL_Rect eAttackingPos;
 
 bool runningbool = true;
 
-enum Key{Up, Down, Left, Right};
-Key key = NULL;
+enum Key{
+	Up = 0,
+	Down,
+	Left,
+	Right
+};
+Key key = Up;
 
 void EventHandler(SDL_Event* event)
 {
