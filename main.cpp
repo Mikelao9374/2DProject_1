@@ -100,7 +100,7 @@ int main(int argc,char* argv[])
 			EventHandler(&event);
 			if (SDL_HasIntersection(&cAttackingPos, &EnemyPos) == SDL_TRUE)
 			{
-				
+				exit(1);
 			}
 		}
 		Render();
