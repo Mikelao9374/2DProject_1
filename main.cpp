@@ -84,6 +84,9 @@ void Render()
 {
 	SDL_SetRenderDrawColor(SDLcw::mRenderer, 0xcc, 0xcc, 0xcc, 0xff);
 	SDL_RenderClear(SDLcw::mRenderer);
+
+	SDL_RenderCopy(SDLcw::mRenderer, Character, NULL, &CharacterPos);
+
 	SDL_RenderPresent(SDLcw::mRenderer);
 }
 
@@ -98,6 +101,8 @@ int main(int argc,char* argv[])
 
 	CharacterPos.x = 10;
 	CharacterPos.y = 10;
+	CharacterPos.w = 50;
+	CharacterPos.h = 50;
 
 	EnemyPos.x = 615;
 	EnemyPos.y = 335;
