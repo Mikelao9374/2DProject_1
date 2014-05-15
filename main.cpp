@@ -92,6 +92,10 @@ int main(int argc,char* argv[])
 	SDLcw::Init();
 	SDL_Event event;
 
+	Character = SDLli::SDLli("Character.bmp", mRenderer);
+	cAttacking = SDLli::SDLli("cAttacking.bmp", mRenderer);
+	Enemy = SDLli::SDLlli("Enemy.bmp", mRenderer);
+
 	CharacterPos.x = 10;
 	CharacterPos.y = 10;
 
