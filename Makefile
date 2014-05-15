@@ -13,7 +13,7 @@ INCLUDE+= $(shell sdl2-config --cflags)
 # Libs flags
 LIB+= $(shell sdl2-config --libs)
 
-OBJ= main.o SDLcw.o
+OBJ= main.o SDLcw.o SDLli.o
 
 OUT_EXE= game.exe
 

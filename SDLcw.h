@@ -2,6 +2,9 @@
 #include <string>
 #include <SDL2/SDL.h>
 
+#ifndef SDLCW_H
+#define SDLCW_H
+
 using namespace std;
 
 class SDLcw
@@ -15,3 +18,5 @@ class SDLcw
 		static SDL_Window* mWindow;
 		static SDL_Renderer* mRenderer;
 };
+
+#endif

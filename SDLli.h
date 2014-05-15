@@ -2,13 +2,18 @@
 #include <SDL2/SDL.h>
 #include <string>
 
+#ifndef SDLLI_H
+#define SDLLI_H
+
+using namespace std;
+
 class SDLli
 {
 	public:
-		SDLli(string fileName, SDL_Renderer* renderer);
+		SDLli(){};
 		~SDLli();
 
-		SDL_Surface* SurfaceImage;
-		SDL_Texture* TextureImage;
-		string basePath = SDL_GetBasePath();
+		static SDL_Texture* LoadImage(string filename, SDL_Renderer* renderer);
 };
+
+#endif

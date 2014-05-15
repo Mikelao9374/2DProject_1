@@ -1,8 +1,12 @@
 #include "SDLli.h"
 
-SDLli::SDLli(string fileName, SDL_Renderer* renderer)
+SDL_Texture* SDLli::LoadImage(string fileName, SDL_Renderer* renderer)
 {
-	SurfaceImage = SDL_LoadBMP((basePath + filename).c_str());
+	SDL_Surface* SurfaceImage;
+	SDL_Texture* TextureImage;
+	string basePath = SDL_GetBasePath();
+
+	SurfaceImage = SDL_LoadBMP((basePath + fileName).c_str());
 	if(SurfaceImage == NULL)
 	{
 		cout << "SDL ERROR:" << SDL_GetError() << endl;
