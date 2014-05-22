@@ -86,6 +86,7 @@ void Render()
 	SDL_RenderClear(SDLcw::mRenderer);
 
 	SDL_RenderCopy(SDLcw::mRenderer, Character, NULL, &CharacterPos);
+	SDL_RenderCopy(SDLcw::mRenderer, Enemy, NULL, &EnemyPos);
 
 	SDL_RenderPresent(SDLcw::mRenderer);
 }
@@ -103,9 +104,14 @@ int main(int argc,char* argv[])
 	CharacterPos.y = 10;
 	CharacterPos.w = 50;
 	CharacterPos.h = 50;
+	
+	cAttackingPos.w = 50;
+	cAttackingPos.h = 50;
 
 	EnemyPos.x = 615;
 	EnemyPos.y = 335;
+	EnemyPos.w = 50;
+	EnemyPos.h = 50;
 
 	while (runningbool == true) 
 	{
